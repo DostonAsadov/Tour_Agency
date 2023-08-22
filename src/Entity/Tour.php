@@ -19,8 +19,8 @@ class Tour
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\Column(type: Types::TIME_MUTABLE)]
-    private ?\DateTimeInterface $duration = null;
+    #[ORM\Column]
+    private ?int $duration = null;
 
     #[ORM\Column]
     private ?int $price = null;
@@ -37,16 +37,16 @@ class Tour
     #[ORM\Column(length: 255)]
     private ?string $tour_type = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $age_requirement = null;
+    #[ORM\Column(type:Types::BOOLEAN)]
+    private ?bool $age_requirement = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $guiding = null;
+    #[ORM\Column]
+    private ?bool $guiding = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $review = null;
 
-    #[ORM\Column(type: Types::ARRAY)]
+    #[ORM\Column(type: Types::SIMPLE_ARRAY )]
     private array $tags = [];
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -55,8 +55,8 @@ class Tour
     #[ORM\Column(length: 255)]
     private ?string $map = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $Transport = null;
+    #[ORM\Column]
+    private ?bool $Transport = null;
 
     #[ORM\Column(type: Types::ARRAY)]
     private array $itinerary = [];
@@ -67,7 +67,7 @@ class Tour
     #[ORM\Column(type: Types::TEXT)]
     private ?string $tour_Excluded = null;
 
-    #[ORM\Column(type: Types::ARRAY, nullable: true)]
+    #[ORM\Column(type: Types::SIMPLE_ARRAY, nullable: true)]
     private ?array $availability = null;
 
     public function getId(): ?int
@@ -87,12 +87,12 @@ class Tour
         return $this;
     }
 
-    public function getDuration(): ?\DateTimeInterface
+    public function getDuration(): ?int
     {
         return $this->duration;
     }
 
-    public function setDuration(\DateTimeInterface $duration): static
+    public function setDuration(int $duration): static
     {
         $this->duration = $duration;
 
@@ -159,24 +159,24 @@ class Tour
         return $this;
     }
 
-    public function getAgeRequirement(): ?string
+    public function getAgeRequirement(): ?bool
     {
         return $this->age_requirement;
     }
 
-    public function setAgeRequirement(string $age_requirement): static
+    public function setAgeRequirement(bool $age_requirement): static
     {
         $this->age_requirement = $age_requirement;
 
         return $this;
     }
 
-    public function getGuiding(): ?string
+    public function getGuiding(): ?bool
     {
         return $this->guiding;
     }
 
-    public function setGuiding(string $guiding): static
+    public function setGuiding(bool $guiding): static
     {
         $this->guiding = $guiding;
 
@@ -231,12 +231,12 @@ class Tour
         return $this;
     }
 
-    public function getTransport(): ?string
+    public function getTransport(): ?bool
     {
         return $this->Transport;
     }
 
-    public function setTransport(string $Transport): static
+    public function setTransport(bool $Transport): static
     {
         $this->Transport = $Transport;
 
